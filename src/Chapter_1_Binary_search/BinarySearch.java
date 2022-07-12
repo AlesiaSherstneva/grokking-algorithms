@@ -5,16 +5,16 @@ public class BinarySearch {
 
         //создаём массив из 240_000 элементов
         int[] array = new int[240_000];
-        for (int i = 1; i <= 240_000; i++) {
-            array[i - 1] = i;
+        for (int i = 0; i < 240_000; i++) {
+            array[i] = i+1;
         }
-        System.out.println("Длина массива: " + array.length + " элементов.");
+        System.out.println("Сформирован массив из " + array.length + " элементов.");
 
         //для поиска перебором худшим случаем будет искать последнее число в массиве
-        System.out.println("Для поиска перебором потребовалось " + stupidSearch(array, array[array.length - 1]) + " шагов.");
+        System.out.println("Для поиска перебором потребовалось " + stupidSearch(array, array[array.length-1]) + " шагов.");
 
         //для бинарного поиска худшим случаем будет искать число, равное половине количества элементов минус один элемент
-        System.out.println("Для бинарного поиска потребовалось " + binarySearch(array, array[(array.length - 1) / 2 - 1]) + " шагов.");
+        System.out.println("Для бинарного поиска потребовалось " + binarySearch(array, array[(array.length) / 2 - 1]) + " шагов.");
     }
 
     static int stupidSearch(int[] array, int number) {
@@ -33,9 +33,9 @@ public class BinarySearch {
         while (floor != ceil) {
             counter++;
             middle = (floor + ceil) / 2;
-            if (number > array[middle - 1]) {
+            if (number > array[middle]) {
                 floor = middle;
-            } else if (number < array[middle - 1]) {
+            } else if (number < array[middle]) {
                 ceil = middle;
             } else {
                 break;
